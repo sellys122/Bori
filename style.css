@@ -1296,3 +1296,22 @@ html {
   border-radius: 2px;
   pointer-events: none;
 }
+/* 태블릿·좁은 노트북 폭: 제목이 소개 창 뒤에 가려지지 않도록 소개 창을 제목 아래로 내립니다. */
+@media (min-width: 761px) and (max-width: 1200px) {
+  .desktop {
+    min-height: 1000px;
+  }
+  .wallpaper-title {
+    top: 14px;
+  }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .intro {
+    top: 120px;
+  }
+}
+@media (min-width: 1101px) and (max-width: 1200px) {
+  .intro {
+    top: 128px;
+  }
+}
