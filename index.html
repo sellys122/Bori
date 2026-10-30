@@ -1,13 +1,455 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f3b9cf"><meta name="description" content="저희집 보리를 소개합니다. 보리의 사진과 일상을 담은 레트로 개인 홈페이지."><title>저희집 보리를 소개합니다</title><link rel="icon" href="assets/hamster-1.webp"><link rel="stylesheet" href="style.css"></head><body>
-<div class="monitor"><div class="desktop" id="desktop"><div class="wallpaper-title" aria-hidden="true"><span>BORI’S PERSONAL HOMEPAGE</span><strong>저희집 보리를<br>소개합니다<span>!</span></strong><small>small paws, big love. since 2026</small></div>
-<nav class="desktop-icons" aria-label="바탕화면 바로가기"><button data-open="intro"><span class="pixel-icon computer"></span><span>내 컴퓨터<br>보리 소개</span></button><button data-open="album"><span class="pixel-icon folder"></span><span>사진첩</span></button><button data-open="guest"><span class="pixel-icon letter"></span><span>방명록</span></button><button data-open="music"><span class="pixel-icon cd"></span><span>Channel.mp3</span></button></nav>
-<img class="character char-one" src="assets/hamster-1.webp" alt="해바라기씨를 들고 있는 보리의 입체 일러스트" draggable="false"><img class="character char-two" src="assets/hamster-2.webp" alt="손을 흔드는 보리의 입체 일러스트" draggable="false"><img class="character char-three" src="assets/hamster-3.webp" alt="동그랗게 앉아 있는 보리의 입체 일러스트" draggable="false">
-<section class="window intro" id="intro" aria-label="보리 소개"><header class="titlebar lime"><span>bori.exe - 보리 소개</span><div class="window-controls"><button data-min="intro" aria-label="보리 소개 최소화">_</button><button data-close="intro" aria-label="보리 소개 닫기">×</button></div></header><div class="menu">File &nbsp; Edit &nbsp; View &nbsp; Help</div><div class="window-body intro-body"><div class="profile-row"><img src="assets/hamster-2.webp" alt="보리 캐릭터"><p>« Name: 보리 Bori<br>« Color: 포근한 크림색<br>« Charm: 까만 눈, 분홍 코</p></div><div class="dashed"></div><p class="blue">안녕! 저희집 보리를 소개합니다.<br>작은 발로 찾아온 커다란 행복.<br>( ˶ᵔ ᵕ ᵔ˶ )</p><div class="dashed"></div><p>복슬복슬한 털과 동그란 볼,<br>한 번 마주치면 자꾸 보고 싶은 얼굴.</p><p>이곳은 <em>보리의 귀여운 순간</em>들을<br>하나씩 모아 두는 작은 홈페이지입니다.</p><div class="profile-note">오늘도 보리 보러 와 줘서 고마워!</div></div><div class="scrollbar" aria-hidden="true"><span>◀</span><i></i><span>▶</span></div></section>
-<section class="window moments" id="moments" aria-label="보리의 순간"><header class="titlebar cyan"><span>daily.txt - 보리의 순간</span><div class="window-controls"><button data-min="moments" aria-label="보리의 순간 최소화">_</button><button data-close="moments" aria-label="보리의 순간 닫기">×</button></div></header><div class="menu">File &nbsp; Edit &nbsp; Search &nbsp; Help</div><div class="window-body"><div class="photo-strip"><img src="assets/photo-05.jpg" alt="까만 눈으로 바라보는 보리"><p>« 작은 귀<br>« 반짝이는 눈<br>« 말랑한 하루</p></div><div class="dashed"></div><p class="blue">보리의 하루는 어떤 모습일까?<br>사진첩에서 만나 봐!<br>₍ᐢ. ̫.ᐢ₎ ♡</p><div class="dashed"></div><p>밥 먹다가 빼꼼.<br>놀다가 또 빼꼼.</p><p>평범한 하루도 보리와 함께라면<br>조금 더 <em>다정한 장면</em>이 됩니다.</p><button class="wide" data-open="album">보리 사진 더 보기 →</button></div><div class="scrollbar" aria-hidden="true"><span>◀</span><i></i><span>▶</span></div></section>
-<section class="window album" id="album" aria-label="보리 사진첩"><header class="titlebar pink"><span>album - 보리 모아보기 (12)</span><div class="window-controls"><button data-min="album" aria-label="사진첩 최소화">_</button><button data-close="album" aria-label="사진첩 닫기">×</button></div></header><div class="album-toolbar"><span>마음에 드는 사진을 눌러 봐 ♡</span><span>▦</span></div><div class="album-grid" id="album-grid"></div><div class="statusline">12 photos &nbsp; | &nbsp; every little moment</div></section>
-<section class="window guest" id="guest" aria-label="방명록"><header class="titlebar coral"><span>guestbook - 보리에게 한마디</span><div class="window-controls"><button data-min="guest" aria-label="방명록 최소화">_</button><button data-close="guest" aria-label="방명록 닫기">×</button></div></header><div class="menu">File &nbsp; Edit &nbsp; Message &nbsp; Help</div><div class="window-body"><p class="blue guest-greeting">보리 보고 가는 길에<br>작은 인사 하나 남겨 주세요 ♡</p><form id="guest-form"><label>From.<input name="nickname" placeholder="이름 / 별명" maxlength="20" required></label><textarea name="message" placeholder="보리야, 안녕!" aria-label="방명록 내용" maxlength="200" required></textarea><div class="form-bottom"><small>이 브라우저에만 저장돼요.</small><button type="submit">남기기</button></div></form><div id="guest-messages" aria-live="polite"></div></div><div class="scrollbar" aria-hidden="true"><span>◀</span><i></i><span>▶</span></div></section>
-<section class="window music" id="music" aria-label="배경 음악"><header class="titlebar lavender"><span>Media Player</span><div class="window-controls"><button data-min="music" aria-label="음악 창 최소화">_</button><button data-close="music" aria-label="음악 창 닫기">×</button></div></header><div class="player-screen"><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><div><strong>Channel.mp3</strong><small id="play-status">PRESS PLAY TO LISTEN</small></div></div><div class="player-controls"><button id="play" aria-label="배경 음악 재생">▶</button><button id="stop" aria-label="배경 음악 정지">■</button><span id="track-time">00:00</span><label class="volume-label">VOL <input id="volume" type="range" min="0" max="1" step="0.05" value="0.35" aria-label="음량"></label></div><audio id="bgm" src="assets/Channel.mp3" preload="metadata" loop></audio></section>
-<div class="desktop-note">복슬복슬한 하루를 보내세요.<br><span>♡ you are always welcome here ♡</span></div><button class="corner-shortcut" data-open="intro"><img src="assets/hamster-1.webp" alt=""><span>BORI</span></button>
-</div><footer class="taskbar"><button id="start" aria-expanded="false"><span class="start-mark">▦</span> 시작</button><div class="task-buttons"><button data-open="intro">보리 소개</button><button data-open="album">사진첩</button><button data-open="guest">방명록</button><button data-open="music">♫ Channel.mp3</button></div><span class="tray"><span id="sound-icon">♪</span><time id="clock"></time></span></footer><nav id="start-menu" hidden aria-label="시작 메뉴"><strong>BORI 95</strong><div><button data-open="intro">보리 소개</button><button data-open="album">사진첩 열기</button><button data-open="guest">방명록 남기기</button><button data-open="music">음악 플레이어</button></div></nav></div>
-<dialog id="lightbox"><div class="titlebar cyan"><span id="photo-title">Bori.jpg</span><button id="close-photo" aria-label="사진 닫기">×</button></div><img id="large-photo" alt="보리 사진 확대"><div class="photo-navigation"><button id="prev-photo" aria-label="이전 사진">◀ 이전</button><span id="photo-count"></span><button id="next-photo" aria-label="다음 사진">다음 ▶</button></div></dialog><script src="app.js"></script></body></html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f3b9cf">
+    <meta name="description" content="저희집 보리를 소개합니다. 보리의 사진과 일상을 담은 레트로 개인 홈페이지.">
+    <title>
+      저희집 보리를 소개합니다
+    </title>
+    <link rel="icon" href="assets/hamster-1.webp">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="monitor">
+      <div class="desktop" id="desktop">
+        <div class="wallpaper-title" aria-hidden="true">
+          <span>
+            BORI’S PERSONAL HOMEPAGE
+          </span>
+          <strong>
+            저희집 보리를
+            <br>
+            소개합니다
+            <span>
+              !
+            </span>
+          </strong>
+          <small>
+            small paws, big love. since 2026
+          </small>
+        </div>
+        <nav class="desktop-icons" aria-label="바탕화면 바로가기">
+          <button data-open="intro">
+            <span class="pixel-icon computer">
+            </span>
+            <span>
+              내 컴퓨터
+              <br>
+              보리 소개
+            </span>
+          </button>
+          <button data-open="album">
+            <span class="pixel-icon folder">
+            </span>
+            <span>
+              사진첩
+            </span>
+          </button>
+          <button data-open="guest">
+            <span class="pixel-icon letter">
+            </span>
+            <span>
+              방명록
+            </span>
+          </button>
+          <button data-open="music">
+            <span class="pixel-icon cd">
+            </span>
+            <span>
+              Channel.mp3
+            </span>
+          </button>
+        </nav>
+        <img class="character char-one" src="assets/hamster-1.webp" alt="해바라기씨를 들고 있는 보리의 입체 일러스트" draggable="false">
+        <img class="character char-two" src="assets/hamster-2.webp" alt="손을 흔드는 보리의 입체 일러스트" draggable="false">
+        <img class="character char-three" src="assets/hamster-3.webp" alt="동그랗게 앉아 있는 보리의 입체 일러스트" draggable="false">
+        <section class="window intro" id="intro" aria-label="보리 소개">
+          <header class="titlebar lime">
+            <span>
+              bori.exe - 보리 소개
+            </span>
+            <div class="window-controls">
+              <button data-min="intro" aria-label="보리 소개 최소화">
+                _
+              </button>
+              <button data-close="intro" aria-label="보리 소개 닫기">
+                ×
+              </button>
+            </div>
+          </header>
+          <div class="menu">
+            File
+            &nbsp;
+            Edit
+            &nbsp;
+            View
+            &nbsp;
+            Help
+          </div>
+          <div class="window-body intro-body">
+            <div class="profile-row">
+              <img src="assets/hamster-2.webp" alt="보리 캐릭터">
+              <p>
+                « 종류: 골든 햄스터
+                <br>
+                « 성별: 남자 아이
+                <br>
+                « 특징: 식탐이 많음
+              </p>
+            </div>
+            <div class="dashed">
+            </div>
+            <p class="blue">
+              안녕하세요~ 저희집 보리를 소개합니다!
+              <br>
+              ( ˶ᵔ ᵕ ᵔ˶ )
+            </p>
+            <p>
+              아주 작고 귀여운 이 햄스터는
+              <br>
+              2024년 10월 5일에 만났답니다!
+            </p>
+            <div class="dashed">
+            </div>
+            <p>
+              겁은 많지만 식탐도 많은 저희 집 귀염둥이!
+              <br>
+              사진을 보여드리기 위해ㅎㅎ 만든 작은 홈페이지입니다
+            </p>
+            <div class="profile-note">
+              오늘도 보리 보러 와 줘서 고마워!
+            </div>
+          </div>
+          <div class="scrollbar" aria-hidden="true">
+            <span>
+              ◀
+            </span>
+            <i>
+            </i>
+            <span>
+              ▶
+            </span>
+          </div>
+        </section>
+        <section class="window moments" id="moments" aria-label="보리의 순간">
+          <header class="titlebar cyan">
+            <span>
+              daily.txt - 보리의 순간
+            </span>
+            <div class="window-controls">
+              <button data-min="moments" aria-label="보리의 순간 최소화">
+                _
+              </button>
+              <button data-close="moments" aria-label="보리의 순간 닫기">
+                ×
+              </button>
+            </div>
+          </header>
+          <div class="menu">
+            File
+            &nbsp;
+            Edit
+            &nbsp;
+            Search
+            &nbsp;
+            Help
+          </div>
+          <div class="window-body">
+            <div class="photo-strip">
+              <img src="assets/photo-05.jpg" alt="까만 눈으로 바라보는 보리">
+              <p>
+                « 작은 귀
+                <br>
+                « 빨간 코
+                <br>
+                « 핑크색 손바닥
+              </p>
+            </div>
+            <div class="dashed">
+            </div>
+            <p class="blue">
+              골든햄스터는 야행성이에요
+              <br>
+              낮에는 쿨쿨 자고
+              <br>
+              제가 하루 일과를 다 끝낼 즈음에 일어난답니다.
+            </p>
+            <div class="dashed">
+            </div>
+            <p>
+              귀여운 모습도 있었지만
+              <br>
+              바보같이 찍힌 적도 있는 모습을
+              <br>
+              보여드리겠습니다~~~
+            </p>
+            <button class="wide" data-open="album">
+              보리 사진 보러가기
+            </button>
+          </div>
+          <div class="scrollbar" aria-hidden="true">
+            <span>
+              ◀
+            </span>
+            <i>
+            </i>
+            <span>
+              ▶
+            </span>
+          </div>
+        </section>
+        <section class="window album" id="album" aria-label="보리 사진첩">
+          <header class="titlebar pink">
+            <span>
+              album - 보리 모아보기 (12)
+            </span>
+            <div class="window-controls">
+              <button data-min="album" aria-label="사진첩 최소화">
+                _
+              </button>
+              <button data-close="album" aria-label="사진첩 닫기">
+                ×
+              </button>
+            </div>
+          </header>
+          <div class="album-toolbar">
+            <span>
+              마음에 드는 사진을 눌러 봐 ♡
+            </span>
+            <span>
+              ▦
+            </span>
+          </div>
+          <div class="album-grid" id="album-grid">
+          </div>
+          <div class="statusline">
+            12 photos
+            &nbsp;
+            |
+            &nbsp;
+            every little moment
+          </div>
+        </section>
+        <section class="window guest" id="guest" aria-label="방명록">
+          <header class="titlebar coral">
+            <span>
+              guestbook - 보리에게 한마디
+            </span>
+            <div class="window-controls">
+              <button data-min="guest" aria-label="방명록 최소화">
+                _
+              </button>
+              <button data-close="guest" aria-label="방명록 닫기">
+                ×
+              </button>
+            </div>
+          </header>
+          <div class="menu">
+            File
+            &nbsp;
+            Edit
+            &nbsp;
+            Message
+            &nbsp;
+            Help
+          </div>
+          <div class="window-body">
+            <div class="memorial-message">
+              <p>
+                햄스터의 수명은 아주 짧아서
+                <br>
+                보리는 저희 집에 온 지 698일째 되던 날
+                <br>
+                해바라기씨 별로 떠나고 말았답니다. . . ㅠㅠ
+              </p>
+              <p>
+                그래도 사진을 많이 찍어서 다행이라고 생각해요
+                <br>
+                연별님도 반려동물을 키우게 된다면 꼭!
+                <br>
+                사진을 많이 찍어두시길 바랄게요 ㅎㅎ
+              </p>
+            </div>
+            <form id="guest-form">
+              <label>
+                From.
+                <input name="nickname" placeholder="이름 / 별명" maxlength="20" required>
+              </label>
+              <textarea name="message" placeholder="보리야, 안녕!" aria-label="방명록 내용" maxlength="200" required>
+              </textarea>
+              <div class="form-bottom">
+                <small>
+                  이 브라우저에만 저장돼요.
+                </small>
+                <button type="submit">
+                  남기기
+                </button>
+              </div>
+            </form>
+            <div id="guest-messages" aria-live="polite">
+            </div>
+          </div>
+          <div class="scrollbar" aria-hidden="true">
+            <span>
+              ◀
+            </span>
+            <i>
+            </i>
+            <span>
+              ▶
+            </span>
+          </div>
+        </section>
+        <section class="window music" id="music" aria-label="배경 음악">
+          <header class="titlebar lavender">
+            <span>
+              Media Player
+            </span>
+            <div class="window-controls">
+              <button data-min="music" aria-label="음악 창 최소화">
+                _
+              </button>
+              <button data-close="music" aria-label="음악 창 닫기">
+                ×
+              </button>
+            </div>
+          </header>
+          <div class="player-screen">
+            <span class="equalizer" aria-hidden="true">
+              <i>
+              </i>
+              <i>
+              </i>
+              <i>
+              </i>
+              <i>
+              </i>
+              <i>
+              </i>
+              <i>
+              </i>
+              <i>
+              </i>
+              <i>
+              </i>
+            </span>
+            <div>
+              <strong>
+                Channel.mp3
+              </strong>
+              <small id="play-status">
+                PRESS PLAY TO LISTEN
+              </small>
+            </div>
+          </div>
+          <div class="player-controls">
+            <button id="play" aria-label="배경 음악 재생">
+              ▶
+            </button>
+            <button id="stop" aria-label="배경 음악 정지">
+              ■
+            </button>
+            <span id="track-time">
+              00:00
+            </span>
+            <label class="volume-label">
+              VOL
+              <input id="volume" type="range" min="0" max="1" step="0.05" value="0.35" aria-label="음량">
+            </label>
+          </div>
+          <audio id="bgm" src="assets/Channel.mp3" preload="metadata" loop>
+          </audio>
+        </section>
+        <div class="desktop-note">
+          복슬복슬한 하루를 보내세요.
+          <br>
+          <span>
+            ♡ you are always welcome here ♡
+          </span>
+        </div>
+        <button class="corner-shortcut" data-open="intro">
+          <img src="assets/hamster-1.webp" alt="">
+          <span>
+            BORI
+          </span>
+        </button>
+      </div>
+      <footer class="taskbar">
+        <button id="start" aria-expanded="false">
+          <span class="start-mark">
+            ▦
+          </span>
+          시작
+        </button>
+        <div class="task-buttons">
+          <button data-open="intro">
+            보리 소개
+          </button>
+          <button data-open="album">
+            사진첩
+          </button>
+          <button data-open="guest">
+            방명록
+          </button>
+          <button data-open="music">
+            ♫ Channel.mp3
+          </button>
+        </div>
+        <span class="tray">
+          <span id="sound-icon">
+            ♪
+          </span>
+          <time id="clock">
+          </time>
+        </span>
+      </footer>
+      <nav id="start-menu" hidden aria-label="시작 메뉴">
+        <strong>
+          BORI 95
+        </strong>
+        <div>
+          <button data-open="intro">
+            보리 소개
+          </button>
+          <button data-open="album">
+            사진첩 열기
+          </button>
+          <button data-open="guest">
+            방명록 남기기
+          </button>
+          <button data-open="music">
+            음악 플레이어
+          </button>
+        </div>
+      </nav>
+    </div>
+    <dialog id="lightbox">
+      <div class="titlebar cyan">
+        <span id="photo-title">
+          Bori.jpg
+        </span>
+        <button id="close-photo" aria-label="사진 닫기">
+          ×
+        </button>
+      </div>
+      <img id="large-photo" alt="보리 사진 확대">
+      <div class="photo-navigation">
+        <button id="prev-photo" aria-label="이전 사진">
+          ◀ 이전
+        </button>
+        <span id="photo-count">
+        </span>
+        <button id="next-photo" aria-label="다음 사진">
+          다음 ▶
+        </button>
+      </div>
+    </dialog>
+    <script src="app.js">
+    </script>
+    <script src="pet.js">
+    </script>
+  </body>
+</html>
+
