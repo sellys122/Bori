@@ -186,14 +186,36 @@ function launchConfetti(x,y){
     ],{duration:1700+Math.random()*800,easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish=()=>p.remove()
   }
 }
+const GUEST_REPLIES={
+  1:'감사합니다~ 하지만 서버에 연결하지 않아서 저에게 닿지는 않을거에요ㅋ큐ㅠㅠㅠ 연별님 좋은하루되세요!! ><',
+  5:'연별님?? 지금 다섯번째 보내셨어요',
+  10:'헐.....10번 누르셨어요...',
+  20:'지금 심심하시죠!!! 연별님을 퇴근시켜라!!',
+  30:'이스터에그는 이제 끝입니다!!! 지금 5시 54분이라 저도 불금을 즐기러 퇴근하겠습니다ㅎㅎ 그럼 이만!!'
+};
+let guestSendCount=0;
+try{
+  guestSendCount=Number(localStorage.getItem('bori-guest-sends'))||0
+}
+catch{
+}
+function nextGuestReply(){
+  guestSendCount++;
+  try{
+    localStorage.setItem('bori-guest-sends',String(guestSendCount))
+  }
+  catch{
+  }
+  return GUEST_REPLIES[guestSendCount]||'감사합니다~~'
+}
 let guestPopup,guestPopupTimer;
-function showGuestPopup(){
+function showGuestPopup(text){
   if(!guestPopup){
     guestPopup=document.createElement('div');
     guestPopup.className='guest-popup';
-    guestPopup.setAttribute('role','status');
-    guestPopup.textContent='감사합니다~ 하지만 서버에 연결하지 않아서 저에게 닿지는 않을거에요ㅋ큐ㅠㅠㅠ 연별님 좋은하루되세요!! ><'
+    guestPopup.setAttribute('role','status')
   }
+  guestPopup.textContent=text;
   document.body.append(guestPopup);
   if(!calm())guestPopup.animate([
     {transform:'translate(-50%,-50%) scale(.85)',opacity:0},
@@ -220,7 +242,7 @@ $('#guest-form').onsubmit=e=>{
   }
   renderMessages();
   f.reset();
-  showGuestPopup()
+  showGuestPopup(nextGuestReply())
 }
 ;
 function tick(){
