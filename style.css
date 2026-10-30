@@ -1270,3 +1270,29 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
+/* 방명록 남기기: 폭죽 조각과 잠깐 뜨는 안내 팝업 */
+.guest-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+  width: min(320px, calc(100vw - 32px));
+  padding: 18px 20px;
+  background: #c3c3c3;
+  border: 2px solid;
+  border-color: #fff #444 #444 #fff;
+  box-shadow: 3px 3px #252525;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+  pointer-events: none;
+}
+.confetti {
+  position: fixed;
+  z-index: 3100;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  pointer-events: none;
+}
