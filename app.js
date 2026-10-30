@@ -183,7 +183,7 @@ function launchConfetti(x,y){
       {transform:'translate(-50%,-50%) rotate(0deg)',opacity:1},
       {transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) rotate(${spin/2}deg)`,opacity:1,offset:.5},
       {transform:`translate(calc(-50% + ${dx*1.1}px),calc(-50% + ${dy+130}px)) rotate(${spin}deg)`,opacity:0}
-    ],{duration:1100+Math.random()*500,easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish=()=>p.remove()
+    ],{duration:1700+Math.random()*800,easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish=()=>p.remove()
   }
 }
 let guestPopup,guestPopupTimer;
@@ -200,9 +200,9 @@ function showGuestPopup(){
     {transform:'translate(-50%,-50%) scale(1)',opacity:1}
   ],{duration:180,easing:'ease-out'});
   const w=innerWidth,h=innerHeight;
-  [[w/2,h/2-30,0],[w/2-110,h/2,180],[w/2+110,h/2,360]].forEach(([x,y,t])=>setTimeout(()=>launchConfetti(x,y),t));
+  [[0,-30,0],[-110,0,180],[110,0,360],[-60,-70,1000],[60,-70,1500],[-150,20,2000],[150,20,2400]].forEach(([dx,dy,t])=>setTimeout(()=>launchConfetti(w/2+dx,h/2+dy),t));
   clearTimeout(guestPopupTimer);
-  guestPopupTimer=setTimeout(()=>guestPopup.remove(),2000)
+  guestPopupTimer=setTimeout(()=>guestPopup.remove(),5000)
 }
 $('#guest-form').onsubmit=e=>{
   e.preventDefault();
