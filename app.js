@@ -166,6 +166,44 @@ function renderMessages(){
   )
 }
 renderMessages();
+const calm=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
+function launchConfetti(x,y){
+  if(calm())return;
+  const colors=['#f28fb0','#ffd966','#8ed1a0','#7ec8e3','#b8addb','#f28060'];
+  for(let i=0;i<44;i++){
+    const p=document.createElement('i');
+    p.className='confetti';
+    p.style.left=x+'px';
+    p.style.top=y+'px';
+    p.style.background=colors[i%colors.length];
+    const a=Math.random()*Math.PI*2,dist=80+Math.random()*150;
+    const dx=Math.cos(a)*dist,dy=Math.sin(a)*dist-50,spin=Math.random()*720-360;
+    document.body.append(p);
+    p.animate([
+      {transform:'translate(-50%,-50%) rotate(0deg)',opacity:1},
+      {transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) rotate(${spin/2}deg)`,opacity:1,offset:.5},
+      {transform:`translate(calc(-50% + ${dx*1.1}px),calc(-50% + ${dy+130}px)) rotate(${spin}deg)`,opacity:0}
+    ],{duration:1100+Math.random()*500,easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish=()=>p.remove()
+  }
+}
+let guestPopup,guestPopupTimer;
+function showGuestPopup(){
+  if(!guestPopup){
+    guestPopup=document.createElement('div');
+    guestPopup.className='guest-popup';
+    guestPopup.setAttribute('role','status');
+    guestPopup.textContent='감사합니다~ 하지만 서버에 연결하지 않아서 저에게 닿지는 않을거에요ㅋ큐ㅠㅠㅠ 연별님 좋은하루되세요!! ><'
+  }
+  document.body.append(guestPopup);
+  if(!calm())guestPopup.animate([
+    {transform:'translate(-50%,-50%) scale(.85)',opacity:0},
+    {transform:'translate(-50%,-50%) scale(1)',opacity:1}
+  ],{duration:180,easing:'ease-out'});
+  const w=innerWidth,h=innerHeight;
+  [[w/2,h/2-30,0],[w/2-110,h/2,180],[w/2+110,h/2,360]].forEach(([x,y,t])=>setTimeout(()=>launchConfetti(x,y),t));
+  clearTimeout(guestPopupTimer);
+  guestPopupTimer=setTimeout(()=>guestPopup.remove(),2000)
+}
 $('#guest-form').onsubmit=e=>{
   e.preventDefault();
   const f=e.target,name=f.nickname.value.trim(),text=f.message.value.trim();
@@ -181,7 +219,8 @@ $('#guest-form').onsubmit=e=>{
   catch{
   }
   renderMessages();
-  f.reset()
+  f.reset();
+  showGuestPopup()
 }
 ;
 function tick(){
