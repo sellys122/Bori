@@ -1,10 +1,21 @@
 /* 작은 바탕화면 보리: 산책, 잡아 옮기기, 간식 먹기 */
 (() => {
+  const HIDE_KEY = 'bori-pet-hidden';
+  try {
+    if (new URLSearchParams(location.search).get('pet') === 'on') localStorage.removeItem(HIDE_KEY);
+    if (localStorage.getItem(HIDE_KEY) === '1') return;
+  } catch {
+    // 저장소를 쓸 수 없으면 숨김 기록 없이 그대로 보여 줍니다.
+  }
+
+  // 태블릿·휴대폰처럼 좌클릭·우클릭이 없는 화면: 드래그 대신 눌러서 메뉴를 엽니다.
+  const compactMq = matchMedia('(max-width: 1100px), (pointer: coarse)');
+  const isCompact = () => compactMq.matches;
+
   const pet = document.createElement('button');
   pet.type = 'button';
   pet.id = 'bori-pet';
   pet.className = 'desktop-pet walking';
-  pet.setAttribute('aria-label', '작은 보리 — 드래그해서 이동, 우클릭 또는 Enter로 간식 메뉴 열기');
   pet.setAttribute('aria-haspopup', 'menu');
   pet.setAttribute('aria-expanded', 'false');
 
@@ -58,6 +69,28 @@
   let suppressClick = false;
   let nextTurn = performance.now() + 5500;
   let restUntil = 0;
+  let gone = false;
+
+  function syncMode() {
+    pet.setAttribute('aria-label', isCompact()
+      ? '작은 보리 — 눌러서 간식 메뉴 열기'
+      : '작은 보리 — 드래그해서 이동, 우클릭 또는 Enter로 간식 메뉴 열기');
+  }
+
+  function hidePet() {
+    gone = true;
+    clearTimeout(eatTimer);
+    clearTimeout(bubbleTimer);
+    clearTimeout(longPressTimer);
+    try {
+      localStorage.setItem(HIDE_KEY, '1');
+    } catch {
+      // 기록하지 못해도 이번 방문에서는 숨깁니다.
+    }
+    pet.remove();
+    menu.remove();
+    status.remove();
+  }
 
   function bounds() {
     return {
@@ -101,7 +134,7 @@
     pet.setAttribute('aria-expanded', 'true');
     menu.style.left = Math.max(4, Math.min(innerWidth - menu.offsetWidth - 4, x)) + 'px';
     menu.style.top = Math.max(4, Math.min(innerHeight - menu.offsetHeight - 4, y)) + 'px';
-    pause.textContent = state.paused ? '다시 산책하기' : '잠깐 쉬기';
+    pause.textContent = isCompact() ? '햄스터 숨기기' : (state.paused ? '다시 산책하기' : '잠깐 쉬기');
     feed.focus({ preventScroll: true });
   }
 
@@ -122,6 +155,10 @@
   });
 
   pause.addEventListener('click', () => {
+    if (isCompact()) {
+      hidePet();
+      return;
+    }
     state.paused = !state.paused;
     closeMenu(true);
     say(state.paused ? '여기서 잠깐 쉬어 갈게요' : '다시 산책할래요');
@@ -134,7 +171,7 @@
   });
 
   pet.addEventListener('pointerdown', event => {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || isCompact()) return;
     closeMenu();
     state.held = true;
     suppressClick = false;
@@ -207,6 +244,7 @@
   window.addEventListener('resize', () => { closeMenu(); paint(); });
 
   function wander(time) {
+    if (gone) return;
     const dt = lastTime ? Math.min((time - lastTime) / 1000, 0.04) : 0;
     lastTime = time;
     const walking = !state.held && !state.eating && !state.paused && !state.menuOpen;
@@ -231,8 +269,10 @@
   // 간식 이미지를 미리 읽어, 먹기 시작할 때 깜박이지 않게 합니다.
   const preload = new Image();
   preload.src = 'assets/hamster-1.webp';
+  syncMode();
+  compactMq.addEventListener('change', syncMode);
   paint();
-  say('우클릭하면 간식을 줄 수 있어요', 6000);
+  say(isCompact() ? '눌러서 간식을 줄 수 있어요' : '우클릭하면 간식을 줄 수 있어요', 6000);
   requestAnimationFrame(wander);
 })();
 
