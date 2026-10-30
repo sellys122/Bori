@@ -382,7 +382,7 @@ setInterval(tick,10000);
         ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]
       }
       ;
-      if(!dirs[e.key])return;
+      if(!dirs[e.key]||matchMedia('(max-width:1100px)').matches)return;
       e.preventDefault();
       initialize();
       const s=states[i],step=e.shiftKey?30:12;
